@@ -1,3 +1,5 @@
+.idea
+output
 calib_raw_data
 *.bag
 devel/

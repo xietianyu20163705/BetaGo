@@ -7,6 +7,10 @@
   <!-- Configuration of Ridgeback which you would like to simulate.
        See ridgeback_description for details. base only has only front HoKuyo laser-->
   <arg name="config" default="$(optenv RIDGEBACK_CONFIG base)" />
+  <arg name="init_x" default="3"/>
+  <arg name="init_y" default="-2"/>
+  <arg name="init_z" default="4"/>
+  <arg name="joystick" default="false"/>
 
   <!-- Launch Gazebo with the specified world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -23,8 +27,8 @@
     <arg name="config" value="$(arg config)" />
   </include>
   <include file="$(find betago_control)/launch/ridgeback/control.launch" />
-  <include file="$(find ridgeback_control)/launch/teleop.launch">
-    <arg name="joystick" value="false"/>
+  <include file="$(find betago_control)/launch/ridgeback/teleop.launch">
+    <arg name="joystick" value="$(arg joystick)"/>
   </include>
 
   <rosparam param="/gazebo_ros_control/pid_gains">
@@ -52,9 +56,9 @@
         args="-urdf
               -model ridgeback
               -param robot_description
-              -x 3
-              -y -2
-              -z 4
+              -x $(arg init_x)
+              -y $(arg init_y)
+              -z $(arg init_z)
 
             " />
   <!--<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"

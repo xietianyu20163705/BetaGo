@@ -89,16 +89,16 @@ In `name` tag, enter the controller you set in `arm_controller.yaml`.
 this launch file is mainly used to find `ridgeback_world.launch`, `betago_states_gazebo.launch`, `arm_trajectory_controller.launch` and `betago_moveit_planning_executation.launch`.
 
 
-
-5. everytime you run setup assistant to modify the model config, some files don't need to be overwritten.
+11. everytime you run setup assistant to modify the model config, some files don't need to be overwritten.
     
     - confg :
-    
+        
         - controller.yaml: this is used to replace the ros_controller.yaml, everytime you add or delete the joint need to be drive, add or delete the corresponding config in the controller.yaml.
+        - ompl_planning.yaml: this is used to set planner.
         
     - launch:
-
-        - moveit_rvi.launch generally dose not need to be overwritten.
+        - moveit.rviz
+        - moveit_rviz.launch generally dose not need to be overwritten.
         - ridgeback_moveit_controller_manager.launch.xml
         - demo.launch generally dose not need to be overwritten.
 

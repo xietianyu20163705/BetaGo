@@ -137,7 +137,7 @@ catkin_package(
         moveit_visual_tools
         moveit_ros_planning_interface
         interactive_markers
-        #        td_ros
+                td_ros
         #  DEPENDS EIGEN3
 )
 
@@ -147,12 +147,13 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+# add Eigen header files
+include_directories( "/usr/local/include/eigen3" )
 include_directories(
  include
   ${catkin_INCLUDE_DIRS}
 )
-# add Eigen header files
-include_directories( "/usr/local/include/eigen3" )
+
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -166,6 +167,7 @@ include_directories( "/usr/local/include/eigen3" )
 
 ## Declare a C++ executable
 add_executable(to_default_pose src/to_default_pose.cpp)
+#add_dependencies(to_default_pose ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(to_default_pose ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
